@@ -16,6 +16,9 @@ public class Main {
     private static final int FILE_PATH_ARGUMENT_INDEX = 0;
 
     public static void main(String[] args) {
+        if (args.length < 1)
+            throw new MissingProgramArgumentException();
+
         String filePath = args[FILE_PATH_ARGUMENT_INDEX];
         File ticketsFile = new File(filePath);
         List<Ticket> tickets = parseTicketsFrom(ticketsFile);

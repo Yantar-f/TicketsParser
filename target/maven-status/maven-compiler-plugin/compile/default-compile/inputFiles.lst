@@ -1,6 +1,7 @@
 C:\Projects\TicketsParser\src\main\java\ru\ideaplatform\Main.java
 C:\Projects\TicketsParser\src\main\java\ru\ideaplatform\FileParsingException.java
 C:\Projects\TicketsParser\src\main\java\ru\ideaplatform\MainTest.java
+C:\Projects\TicketsParser\src\main\java\ru\ideaplatform\MissingProgramArgumentException.java
 C:\Projects\TicketsParser\src\main\java\ru\ideaplatform\TicketsReport.java
 C:\Projects\TicketsParser\src\main\java\ru\ideaplatform\TicketFlightTimeComparator.java
 C:\Projects\TicketsParser\src\main\java\ru\ideaplatform\Ticket.java

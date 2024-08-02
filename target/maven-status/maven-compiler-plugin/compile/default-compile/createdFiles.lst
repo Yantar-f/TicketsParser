@@ -3,6 +3,7 @@ ru\ideaplatform\Ticket.class
 ru\ideaplatform\TicketPriceComparator.class
 ru\ideaplatform\TicketFlightTimeComparator.class
 ru\ideaplatform\MainTest.class
+ru\ideaplatform\MissingProgramArgumentException.class
 ru\ideaplatform\Main.class
 ru\ideaplatform\TicketsReport.class
 ru\ideaplatform\FileParsingException.class
