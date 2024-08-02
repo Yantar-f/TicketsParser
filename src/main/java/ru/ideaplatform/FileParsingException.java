@@ -1,3 +1,5 @@
+package ru.ideaplatform;
+
 import java.io.File;
 
 public class FileParsingException extends RuntimeException {

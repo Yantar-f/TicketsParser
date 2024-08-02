@@ -1,3 +1,5 @@
+package ru.ideaplatform;
+
 import java.util.Comparator;
 
 public class TicketPriceComparator implements Comparator<Ticket> {

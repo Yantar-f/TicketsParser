@@ -1,3 +1,5 @@
+package ru.ideaplatform;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -11,8 +13,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Main {
+    private static final int FILE_PATH_ARGUMENT_INDEX = 0;
+
     public static void main(String[] args) {
-        List<Ticket> tickets = parseTicketsFromLocalFile();
+        String filePath = args[FILE_PATH_ARGUMENT_INDEX];
+        File ticketsFile = new File(filePath);
+        List<Ticket> tickets = parseTicketsFrom(ticketsFile);
         Set<String> carriers = extractCarriersFrom(tickets);
         List<Ticket> vladivostokTelAvivFlights = extractVladivostokTelAvivFlightsFrom(tickets);
 
@@ -61,9 +67,8 @@ public class Main {
         return carriersMinFlightTime;
     }
 
-    private static List<Ticket> parseTicketsFromLocalFile() {
+    private static List<Ticket> parseTicketsFrom(File ticketsJSON) {
         ObjectMapper objectMapper = new ObjectMapper().findAndRegisterModules();
-        File ticketsJSON = new File("tickets.json");
 
         try {
             TicketsReport ticketsReport = objectMapper.readValue(ticketsJSON, new TypeReference<>(){});

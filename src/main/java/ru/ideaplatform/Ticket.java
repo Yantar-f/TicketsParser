@@ -1,3 +1,5 @@
+package ru.ideaplatform;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
@@ -162,7 +164,7 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Ticket{" +
+        return "ru.ideaplatform.Ticket{" +
                 "origin='" + origin + '\'' +
                 ", originName='" + originName + '\'' +
                 ", destination='" + destination + '\'' +

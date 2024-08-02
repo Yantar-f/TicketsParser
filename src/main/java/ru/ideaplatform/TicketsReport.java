@@ -1,3 +1,5 @@
+package ru.ideaplatform;
+
 import java.util.List;
 
 public class TicketsReport {
