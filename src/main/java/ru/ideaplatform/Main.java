@@ -46,7 +46,13 @@ public class Main {
             sort(new TicketPriceComparator());
         }};
 
-        return sortedList.get(sortedList.size()/2).getPrice();
+        if (tickets.size()%2 == 0) {
+            int left = sortedList.get(sortedList.size()/2).getPrice();
+            int right = sortedList.get(sortedList.size()/2 + 1).getPrice();
+            return (left + right)/2;
+        } else {
+            return sortedList.get(sortedList.size()/2).getPrice();
+        }
     }
 
     private static int computeAvgPrice(List<Ticket> tickets) {
