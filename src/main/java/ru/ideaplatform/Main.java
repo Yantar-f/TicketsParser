@@ -41,10 +41,7 @@ public class Main {
     }
 
     private static int computeMedianPrice(List<Ticket> tickets) {
-        List<Ticket> sortedList = new ArrayList<>(tickets.size()) {{
-            addAll(tickets);
-            sort(new TicketPriceComparator());
-        }};
+        List<Ticket> sortedList = new ArrayList<>(tickets) {{sort(new TicketPriceComparator());}};
 
         if (tickets.size()%2 == 0) {
             int left = sortedList.get(sortedList.size()/2).getPrice();
