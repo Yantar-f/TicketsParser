@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,37 +29,47 @@ public class Main {
         Map<String, Integer> carriersVladivostokTelAvivMinFlightTime =
                 computeCarriersMinFlightTime(carriers, vladivostokTelAvivFlights);
 
-        int diffBetweenAvgAndMedianPrice = computeDiffBetweenAvgAndMedianPrice(vladivostokTelAvivFlights);
+        double diffBetweenAvgAndMedianPrice = computeDiffBetweenAvgAndMedianPrice(vladivostokTelAvivFlights);
 
         System.out.println("Carriers Vladivostok to Tel-Aviv min flight time (minutes): " + carriersVladivostokTelAvivMinFlightTime);
         System.out.println("Difference between average and median price: " + diffBetweenAvgAndMedianPrice);
     }
 
-    private static int computeDiffBetweenAvgAndMedianPrice(List<Ticket> tickets) {
-        int avg = computeAvgPrice(tickets);
-        int median = computeMedianPrice(tickets);
+    private static double computeDiffBetweenAvgAndMedianPrice(List<Ticket> tickets) {
+        double avg = computeAvgPrice(tickets);
+        double median = computeMedianPrice(tickets);
+
+        System.out.println("median: " + median);
+
         return Math.abs(avg - median);
     }
 
     private static int computeMedianPrice(List<Ticket> tickets) {
-        List<Ticket> sortedList = new ArrayList<>(tickets) {{sort(new TicketPriceComparator());}};
+        List<Integer> sortedPrices = tickets.stream()
+                .map(Ticket::getPrice)
+                .sorted()
+                .toList();
+
+        System.out.println(sortedPrices);
 
         if (tickets.size()%2 == 0) {
-            int left = sortedList.get(sortedList.size()/2).getPrice();
-            int right = sortedList.get(sortedList.size()/2 + 1).getPrice();
+            int left = sortedPrices.get(sortedPrices.size()/2 - 1);
+            int right = sortedPrices.get(sortedPrices.size()/2);
+
+            System.out.println(left);
+            System.out.println(right);
+
             return (left + right)/2;
         } else {
-            return sortedList.get(sortedList.size()/2).getPrice();
+            return sortedPrices.get(sortedPrices.size()/2);
         }
     }
 
-    private static int computeAvgPrice(List<Ticket> tickets) {
-        int sum = tickets.stream()
+    private static double computeAvgPrice(List<Ticket> tickets) {
+        return (double) tickets.stream()
                 .map(Ticket::getPrice)
                 .reduce(Integer::sum)
-                .orElse(0);
-
-        return sum/tickets.size();
+                .orElse(0) /tickets.size();
     }
 
     private static Map<String, Integer> computeCarriersMinFlightTime(Set<String> carriers,
