@@ -38,9 +38,6 @@ public class Main {
     private static double computeDiffBetweenAvgAndMedianPrice(List<Ticket> tickets) {
         double avg = computeAvgPrice(tickets);
         double median = computeMedianPrice(tickets);
-
-        System.out.println("median: " + median);
-
         return Math.abs(avg - median);
     }
 
@@ -50,14 +47,9 @@ public class Main {
                 .sorted()
                 .toList();
 
-        System.out.println(sortedPrices);
-
         if (tickets.size()%2 == 0) {
             int left = sortedPrices.get(sortedPrices.size()/2 - 1);
             int right = sortedPrices.get(sortedPrices.size()/2);
-
-            System.out.println(left);
-            System.out.println(right);
 
             return (left + right)/2;
         } else {
